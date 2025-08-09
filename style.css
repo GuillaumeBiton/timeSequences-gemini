@@ -1,0 +1,313 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f0f0f0;
+    font-family: Arial, sans-serif;
+}
+
+.timer-container {
+    position: relative;
+    width: 300px;
+    height: 300px;
+}
+
+.timer-circle {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.timer-svg {
+    transform: rotate(-90deg); /* On fait pivoter le cercle pour que le début soit en haut */
+}
+
+.timer-background {
+    fill: none;
+    stroke: #e6e6e6; /* Couleur du cercle de fond (gris clair) */
+    stroke-width: 5;
+}
+
+.timer-progress {
+    fill: none;
+    stroke: #4CAF50; /* Couleur du cercle de progression (vert) */
+    stroke-width: 5;
+    stroke-linecap: round;
+    /* C'est ici que l'on prépare le cercle pour l'animation */
+    stroke-dasharray: 283; /* 2 * PI * rayon (2 * 3.1415 * 45 ≈ 282.7) */
+    stroke-dashoffset: 283; /* On le cache initialement */
+    transition: stroke-dashoffset 1s linear; /* Transition douce pour l'animation */
+}
+
+.timer-display {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 4em;
+    font-weight: bold;
+    color: #333;
+}
+
+.controls {
+    position: absolute;
+    bottom: 50px;
+}
+
+#toggle-btn {
+    padding: 15px 30px;
+    font-size: 1.2em;
+    cursor: pointer;
+    border: none;
+    border-radius: 50px; /* On le rend rond */
+    color: white;
+    background-color: #f44336; /* Rouge pour "Pause" */
+    transition: background-color 0.3s ease;
+}
+#toggle-btn.play {
+    background-color: #4CAF50; /* Vert pour "Lancer" */
+}
+/* ... (gardez tout le CSS précédent) ... */
+
+/* Styles pour la page de création de séquences */
+header {
+    background-color: #333;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+header nav a {
+    color: white;
+    text-decoration: none;
+    margin-top: 10px;
+    display: inline-block;
+}
+
+.sequence-creator {
+    width: 80%;
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+#timer-form button {
+    width: 100%;
+    padding: 12px;
+    background-color: #2196F3;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 1em;
+    cursor: pointer;
+}
+
+#timer-form button:hover {
+    background-color: #1976D2;
+}
+
+.sequence-list {
+    margin-top: 30px;
+}
+
+.sequence-list ul {
+    list-style: none;
+    padding: 0;
+}
+
+.sequence-list li {
+    background-color: #f9f9f9;
+    padding: 10px;
+    border: 1px solid #eee;
+    border-radius: 4px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.actions {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.actions button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    color: white;
+    font-size: 1em;
+    cursor: pointer;
+}
+
+#save-sequence-btn {
+    background-color: #4CAF50;
+}
+#start-sequence-btn {
+    background-color: #f44336;
+}
+
+/* On ajoute un lien vers la page de création sur la page du minuteur */
+header nav a {
+  /* ... (déjà défini) ... */
+}
+/* ... (gardez tout le CSS précédent) ... */
+
+.saved-sequences {
+    margin-top: 40px;
+}
+
+.saved-sequences li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background-color: #f0f8ff;
+    border: 1px solid #e0f0ff;
+    border-radius: 4px;
+    margin-bottom: 8px;
+}
+
+.saved-sequences li button {
+    margin-left: 10px;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.load-btn {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.delete-btn-saved {
+    background-color: #f44336;
+    color: white;
+}
+/* Styles généraux pour le corps */
+body {
+    /* ... (conserver les styles existants) ... */
+    flex-direction: column; /* Empile les éléments verticalement */
+    height: 100vh;
+}
+
+/* On centre le contenu du minuteur et les contrôles */
+.timer-container {
+    width: 90%; /* Prend plus de largeur sur mobile */
+    max-width: 300px;
+    margin: 50px auto 20px; /* Ajoute une marge au-dessus et en dessous */
+}
+
+/* Le cercle du minuteur */
+.timer-circle {
+    /* ... (conserver les styles existants) ... */
+}
+
+/* L'affichage numérique et le label */
+.timer-display {
+    /* ... (conserver les styles existants) ... */
+}
+
+/* Le statut de la séquence */
+.sequence-status {
+    text-align: center;
+    font-size: 1.2em;
+    margin-bottom: 20px;
+}
+
+/* Les boutons de contrôle */
+.controls {
+    position: static; /* Retire le positionnement absolu pour le laisser dans le flux normal */
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+/* Styles pour les petits écrans */
+@media (max-width: 600px) {
+    .controls {
+        flex-direction: row;
+        gap: 10px;
+    }
+
+    .controls button {
+        padding: 12px;
+        font-size: 1em;
+    }
+}
+/* ... (conserver les styles existants) ... */
+
+/* Styles pour la page de création de séquences */
+.sequence-creator {
+    width: 90%; /* Rendre la largeur fluide */
+    margin: 20px auto;
+}
+
+.actions {
+    flex-direction: column; /* Empiler les boutons verticalement sur mobile */
+    gap: 15px;
+}
+
+.actions button {
+    width: 100%; /* Les boutons prennent toute la largeur disponible */
+}
+
+/* Pour les listes de séquences */
+.sequence-list li, .saved-sequences li {
+    flex-direction: column; /* Empiler les éléments de la liste verticalement */
+    align-items: flex-start;
+    padding: 15px;
+}
+
+.saved-sequences li div {
+    margin-top: 10px;
+}
+
+/* On s'assure que les boutons sont bien espacés sur les petits écrans */
+.saved-sequences li button {
+    margin-top: 5px;
+    width: 100%;
+}
+/* ... (garder tous les styles existants) ... */
+
+/* On augmente la taille de la police pour éviter le zoom automatique sur mobile */
+input, button {
+    font-size: 16px; 
+}
+
+/* Styles pour la page de création de séquences */
+.sequence-creator {
+    /* ... (garder les styles existants) ... */
+    margin: 20px auto;
+    padding: 20px;
+}
+
+/* On s'assure que les champs de formulaire ont la bonne taille */
+.form-group input {
+    /* ... (garder les styles existants) ... */
+    font-size: 16px; /* S'assurer que cette règle est bien présente */
+}

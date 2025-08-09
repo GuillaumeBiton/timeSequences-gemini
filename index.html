@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mon Minuteur</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="timer-container">
+        <div class="timer-circle">
+            <svg class="timer-svg" viewBox="0 0 100 100">
+                <circle class="timer-background" cx="50" cy="50" r="45"></circle>
+                <circle class="timer-progress" cx="50" cy="50" r="45"></circle>
+            </svg>
+            <div class="timer-display">00:30</div>
+        </div>
+    </div>
+    
+    <div class="controls">
+        <button id="toggle-btn">Pause</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

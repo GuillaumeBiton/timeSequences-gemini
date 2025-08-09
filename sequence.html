@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Créer une Séquence de Minuteurs</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Créer une Séquence de Minuteurs</h1>
+        <nav>
+            <a href="index.html">Retour au Minuteur</a>
+        </nav>
+    </header>
+
+<main class="sequence-creator">
+        <form id="timer-form">
+            <div class="form-group">
+                <label for="timer-name">Nom du Minuteur:</label>
+                <input type="text" id="timer-name" placeholder="Ex: Travail, Repos" required>
+            </div>
+            <div class="form-group">
+                <label for="timer-duration">Durée (en secondes):</label>
+                <input type="number" id="timer-duration" value="30" min="1" required>
+            </div>
+            <button type="submit">Ajouter à la Séquence</button>
+        </form>
+
+        <div class="sequence-list">
+            <h2>Séquence Actuelle:</h2>
+            <ul id="sequence-list-items">
+                </ul>
+            <div class="actions">
+                <div class="form-group">
+                    <label for="sequence-name">Nom de la Séquence:</label>
+                    <input type="text" id="sequence-name" placeholder="Ex: Séquence HIIT" required>
+                </div>
+                <button id="save-sequence-btn">Sauvegarder</button>
+                <button id="start-sequence-btn">Lancer</button>
+            </div>
+        </div>
+
+        <div class="saved-sequences">
+            <h2>Séquences Sauvegardées:</h2>
+            <ul id="saved-sequences-list">
+                </ul>
+        </div>
+    </main>
+
+    <script src="sequence-script.js"></script>
+</body>
+</html>
